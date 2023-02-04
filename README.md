@@ -125,19 +125,17 @@ df.to_csv('cleaned_imdb_data.csv')
 ```
 sns.set_theme()
 ```
-  **Top 10 Best Perfoming Movies**
+  **Top 10 Best Perfoming Movies and TV Shows**
 ```
 fig = plt.figure(figsize = (10, 5))
 ax = sns.barplot(x = 'title', y = 'rating', data = df.sort_values('rating', ascending=False)[0:10])
 plot = ax.set_xticklabels(ax.get_xticklabels(), rotation = 90)
-plt.xlabel('Movie Title')
+plt.xlabel('Movie Title and TV Shows')
 plt.ylabel('Rating')
-plt.title('Top 10 Best Performing Movies')
+plt.title('Top 10 Best Performing Movies and TV Shows', fontsize = 15)
 plt.show()
 ```
-  ![__results___8_0 (1)](https://user-images.githubusercontent.com/116041695/215379406-97e986c1-113f-4fc9-be0e-5efc96b8a597.png)
-
-From the histogram, we can see that there are a lot of employees in the range of 25 to 35 years.
+![download (13)](https://user-images.githubusercontent.com/116041695/216750399-5b70ace0-9f26-4e47-8ce4-e7da12eb01e7.png)
 
  **Distribution of Category**
 ```
@@ -147,8 +145,7 @@ plt.title("Movies and TV Shows Release Categories", fontsize = 15)
 plt.xlabel('Category')
 plt.ylabel('Count')
 ```
-![__results___10_0](https://user-images.githubusercontent.com/116041695/215379457-d9b3e9c5-1d12-4a4c-97ab-9ebcb2581051.png)
-
+![download (8)](https://user-images.githubusercontent.com/116041695/216749475-0f2638c1-db8e-4cd7-85c4-7d8373b31308.png)
 
 **Genre with the most releases**
 
@@ -163,7 +160,7 @@ fig_tree.update_layout(title='Highest release in Geners',
                   font=dict(color='#8a8d93'),
                   hoverlabel=dict(bgcolor="#444", font_size=13, font_family="Lato, sans-serif"))
 ```
-![__results___12_0](https://user-images.githubusercontent.com/116041695/215379501-029e3c96-482a-481b-a1c1-69bbc9f90f9b.png)
+![newplot (2)](https://user-images.githubusercontent.com/116041695/216749501-c894c66a-d9b6-4295-a11f-139728c348e1.png)
 
 **Total number of releases each year**
 ```
@@ -172,7 +169,7 @@ plt.title("Number of movie releases each year")
 plt.ylabel('Number of releases')
 plt.xlabel('Year')
 ```
-![__results___14_0](https://user-images.githubusercontent.com/116041695/215379532-74933a7d-bb43-40a9-9d57-00b5f4fcd05e.png)
+![download (9)](https://user-images.githubusercontent.com/116041695/216749512-3cf0861b-46b5-4017-ba31-1fb66aedf95d.png)
 
 **Top 10 countries with most releases**
 
@@ -195,7 +192,7 @@ data = country_df[-(country_df.country == 'Missing')]
 g = data.groupby('country', as_index=False)['count'].sum().sort_values(by='count', ascending=False).head(10)
 ax = sns.barplot(data=g, y = 'country', x='count')
 ```
-![__results___16_0](https://user-images.githubusercontent.com/116041695/215379559-92e5d8aa-ab57-4abf-a255-00dce1eeccad.png)
+![download (10)](https://user-images.githubusercontent.com/116041695/216749556-94646c36-3f19-4ffd-b543-4aae43b3603d.png)
 
 **Top 10 Directors**
 
@@ -203,7 +200,8 @@ ax = sns.barplot(data=g, y = 'country', x='count')
 plt.figure(figsize = (16, 9))
 ax = sns.countplot(data = df[-(df.director == 'Missing')], y = 'director', order=df['director'].value_counts().index[1:11])
 plt.title("Top 10 Directors", fontsize = 15)
-plt.xlabel('Count')
-plt.ylabel('Directors')
+plt.xlabel('Count', fontsize = 15)
+plt.ylabel('Directors', fontsize = 15)
 ```
+![download (12)](https://user-images.githubusercontent.com/116041695/216750034-b7d55478-4ca9-451c-af9a-c39ff283cdd5.png)
 
