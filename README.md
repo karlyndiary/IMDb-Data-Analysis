@@ -5,7 +5,7 @@ Data analysis for the case study follows the following steps:
 * [1. Prepare](#1-prepare)
 * [2. Process](#2-process)
 * [3. Data Cleaning](#3-data-cleaning)
-* [4. Analyze and Share](#3-analyze-and-share)
+* [4. Analyze and Share](#4-analyze-and-share)
 
 ## 1. Prepare
 The data used is stored in Kaggle under [Netflix Prize Shows Information (9000 Shows)](https://www.kaggle.com/datasets/akashguna/netflix-prize-shows-information). The dataset contains information like duration of movie, cast, director, genre, languages are present.
