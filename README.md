@@ -203,4 +203,3 @@ plt.xlabel('Count', fontsize = 15)
 plt.ylabel('Directors', fontsize = 15)
 ```
 ![download (12)](https://user-images.githubusercontent.com/116041695/216750034-b7d55478-4ca9-451c-af9a-c39ff283cdd5.png)
-
