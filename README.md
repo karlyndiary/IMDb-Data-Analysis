@@ -4,8 +4,7 @@ Data analysis for the case study follows the following steps:
 
 * [1. Prepare](#1-prepare)
 * [2. Process](#2-process)
-* [3. Data Cleaning](#3-data-cleaning)
-* [4. Analyze and Share](#4-analyze-and-share)
+* [3. Analyze and Share](#3-analyze-and-share)
 
 ## 1. Prepare
 The data used is stored in Kaggle under [Netflix Prize Shows Information (9000 Shows)](https://www.kaggle.com/datasets/akashguna/netflix-prize-shows-information). The dataset contains information like duration of movie, cast, director, genre, languages are present.
@@ -36,7 +35,7 @@ df = pd.read_csv(r'/kaggle/input/netflix-prize-shows-information/imdb_processed.
 df.head()
 ```
 
-## 3. Data Cleaning
+### 2.4 Data Cleaning
 ```
 #view the list of columns
 df.columns
@@ -120,12 +119,12 @@ df.replace(regex=r'video movie', value='movie', inplace=True)
 df.to_csv('cleaned_imdb_data.csv')
 ```
 
- ## 4. Analyze and Share
-  **Setting the theme for all the plots**
+ ## 3. Analyze and Share
+### 3.0 Setting the theme for all the plots
 ```
 sns.set_theme()
 ```
-### 4.1 Top 10 Best Perfoming Movies and TV Shows
+### 3.1 Top 10 Best Perfoming Movies and TV Shows
 ```
 fig = plt.figure(figsize = (10, 5))
 ax = sns.barplot(x = 'title', y = 'rating', data = df.sort_values('rating', ascending=False)[0:10])
@@ -137,7 +136,7 @@ plt.show()
 ```
 ![download (13)](https://user-images.githubusercontent.com/116041695/216750399-5b70ace0-9f26-4e47-8ce4-e7da12eb01e7.png)
 
-### 4.2 Distribution of Category
+### 3.2 Distribution of Category
 ```
 plt.figure(figsize = (10, 5))
 sns.countplot(data = df, x = "category")
@@ -147,7 +146,7 @@ plt.ylabel('Count')
 ```
 ![download (8)](https://user-images.githubusercontent.com/116041695/216749475-0f2638c1-db8e-4cd7-85c4-7d8373b31308.png)
 
-### 4.3 Genre with the most releases
+### 3.3 Genre with the most releases
 
 ```
 pyo.init_notebook_mode()
@@ -162,7 +161,7 @@ fig_tree.update_layout(title='Highest release in Geners',
 ```
 ![newplot (2)](https://user-images.githubusercontent.com/116041695/216749501-c894c66a-d9b6-4295-a11f-139728c348e1.png)
 
-### 4.4 Total number of releases each year
+### 3.4 Total number of releases each year
 ```
 sns.displot(df, x="year", hue="category", kind="kde", fill=True)
 plt.title("Number of movie releases each year")
@@ -171,7 +170,7 @@ plt.xlabel('Year')
 ```
 ![download (9)](https://user-images.githubusercontent.com/116041695/216749512-3cf0861b-46b5-4017-ba31-1fb66aedf95d.png)
 
-### 4.5 Top 10 countries with most releases
+### 3.5 Top 10 countries with most releases
 
 ```
 df["countries"] = df["country"].apply(lambda x : True if x.find(',') != -1 else False)
@@ -194,7 +193,7 @@ ax = sns.barplot(data=g, y = 'country', x='count')
 ```
 ![download (10)](https://user-images.githubusercontent.com/116041695/216749556-94646c36-3f19-4ffd-b543-4aae43b3603d.png)
 
-### 4.6 Top 10 Directors
+### 3.6 Top 10 Directors
 
 ```
 plt.figure(figsize = (16, 9))
