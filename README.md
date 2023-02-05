@@ -23,6 +23,12 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import plotly.express as px
 import plotly.offline as pyo
+
+#NLP
+import nltk
+from nltk.corpus import stopwords
+nltk.download('stopwords')
+from wordcloud import WordCloud
 ```
 
 ### 2.2 Loading the dataset
@@ -203,3 +209,23 @@ plt.xlabel('Count', fontsize = 15)
 plt.ylabel('Directors', fontsize = 15)
 ```
 ![download (12)](https://user-images.githubusercontent.com/116041695/216750034-b7d55478-4ca9-451c-af9a-c39ff283cdd5.png)
+
+### 3.7 Wordcloud for Cast
+
+```
+stop_words = set(stopwords.words('english'))
+df['cast_no_stopwords'] = df['cast'].apply(lambda x: [item for item in str(x).split() if item not in stop_words])
+
+all_words = list([a for b in df['cast_no_stopwords'].tolist() for a in b])
+all_words_str = ' '.join(all_words) 
+
+def plot_cloud(wordcloud):
+    plt.figure(figsize=(30, 20))
+    plt.imshow(wordcloud) 
+    plt.axis("off");
+
+wordcloud = WordCloud(width = 2000, height = 1000, random_state=1, background_color='white', 
+                      colormap='viridis', collocations=False).generate(all_words_str)
+plot_cloud(wordcloud)
+```
+![download](https://user-images.githubusercontent.com/116041695/216799213-e5cabb02-3d0b-4605-b46f-5851fc6a4b45.png)
