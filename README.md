@@ -282,7 +282,7 @@ plt.show()
 ```
 ![__results___45_0](https://github.com/karlyndiary/IMDb-Data-Analysis/assets/116041695/b096e1a9-99fe-4913-83ad-fd53db5556bd)
 
-### 3.9 Relationship between rating and votes
+### 3.9 Relationship between ratings and votes
 
 ```
 plt.figure(figsize=(10, 6))
