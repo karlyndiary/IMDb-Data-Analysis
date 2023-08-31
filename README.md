@@ -2,29 +2,10 @@
 
 Data analysis for the case study follows the following steps:
 
+# <span> Table of Contents </span>
 * [1. Prepare](#1-prepare)
 * [2. Process](#2-process)
 * [3. Analyze and Share](#3-analyze-and-share)
-
-# <span> Table of Contents </span>
-
-* [1. Prepare](#1-prepare)
-* [2. Process](#2-process)
-    * [2.1 Loading Libraries](#installing-the-necessary-packages-needed-for-cleaning-and-analysis)
-    * [2.2 Loading Dataset](#loading-dataset)
-    * [2.3 Exploring Dataset](#explore-dataset)
-    * [2.4 Data Cleaning](#data-cleaning)
-* [3. Analyze and Share](#analyze-and-share)
-    * [3.0 Setting the theme](#setting-the-theme)
-    * [3.1 Top 10 Best Performing Movies and TV Shows](#top-10-best-performing-movies-and-tv-shows)
-    * [3.2 Distribution of Category](#distribution-of-category)
-    * [3.3 Genre with the most releases](#genre-with-the-most-releases)
-    * [3.4 Total number of releases each year](#total-number-of-releases-each-year)
-    * [3.5 Top 10 countries with most releases](#top-10-countries-with-most-releases)
-    * [3.6 Top 10 Directors](#top-10-directors)
-    * [3.7 Wordcloud for Cast](#wordcloud-for-cast)
-    * [3.8 Time series of Ratings](#time-series-of-ratings)
-    * [3.9 Relationship between ratings and votes](#relationship-between-ratings-and-votes)
 
 ## 1. Prepare
 The data used is stored in Kaggle under [Netflix Prize Shows Information (9000 Shows)](https://www.kaggle.com/datasets/akashguna/netflix-prize-shows-information). The dataset contains information like the movie's duration, cast, director, genre, and languages present.
