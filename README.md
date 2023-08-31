@@ -70,7 +70,6 @@ df.dtypes
 #converting 'year' from float to int and 'rating' from object to float
 df['year'] = df['year'].astype(int)
 df['rating'] = df['rating'].astype(float)
-df['runtime'] = df['runtime'].astype(int)
 ```
 ```
 #creating a id, using title and release year
