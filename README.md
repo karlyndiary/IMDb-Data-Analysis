@@ -51,7 +51,7 @@ nltk.download('stopwords')
 from wordcloud import WordCloud
 ```
 
-### 2.2 Loading the dataset
+### 2.2 Loading dataset
 ```
 df = pd.read_csv(r'/kaggle/input/netflix-prize-shows-information/imdb_processed.csv')
 ```
