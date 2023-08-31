@@ -260,6 +260,7 @@ plt.grid(True)
 plt.tight_layout()  # Adjust spacing between labels
 plt.show()
 ```
+![__results___45_0](https://github.com/karlyndiary/IMDb-Data-Analysis/assets/116041695/b096e1a9-99fe-4913-83ad-fd53db5556bd)
 
 ### 3.9 Relationship between rating and votes
 
@@ -272,3 +273,5 @@ plt.title('Relationship between Rating and Vote')
 plt.grid(True)
 plt.show()
 ```
+![__results___47_0](https://github.com/karlyndiary/IMDb-Data-Analysis/assets/116041695/1d665a70-7db4-4e49-b6ea-1ad57654f828)
+
