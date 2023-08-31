@@ -7,7 +7,7 @@ Data analysis for the case study follows the following steps:
 * [3. Analyze and Share](#3-analyze-and-share)
 
 ## 1. Prepare
-The data used is stored in Kaggle under [Netflix Prize Shows Information (9000 Shows)](https://www.kaggle.com/datasets/akashguna/netflix-prize-shows-information). The dataset contains information like duration of movie, cast, director, genre, languages are present.
+The data used is stored in Kaggle under [Netflix Prize Shows Information (9000 Shows)](https://www.kaggle.com/datasets/akashguna/netflix-prize-shows-information). The dataset contains information like the duration of the movie, cast, director, genre, and languages present.
 
 ## 2. Process
 
@@ -51,17 +51,6 @@ df.columns
 df = df.drop("Unnamed: 0",axis=1)
 ```
 ```
-#check for no of duplicates present
-len(df)-len(df.drop_duplicates())
-```
-```
-#dropping duplicates based on title column
-df = df.drop_duplicates('title').sort_index()
-```
-```
-df.shape
-```
-```
 #check for any nulls
 df.isnull().any()
 ```
@@ -81,6 +70,29 @@ df.dtypes
 #converting 'year' from float to int and 'rating' from object to float
 df['year'] = df['year'].astype(int)
 df['rating'] = df['rating'].astype(float)
+df['runtime'] = df['runtime'].astype(int)
+```
+```
+#creating a id, using title and release year
+#add the 'Composite_Key' column
+df['id'] = df['title'] + '_' + df['year'].astype(str)
+
+#move 'id' column to the beginning
+df = df[['id'] + [col for col in df.columns if col != 'id']]
+
+#view the list of columns
+df.columns
+```
+```
+#check for no of duplicates present
+len(df)-len(df.drop_duplicates())
+```
+```
+#dropping duplicates based on id column
+df = df.drop_duplicates('id').sort_index()
+```
+```
+df.shape
 ```
 ```
 #remove brackets from genre, country, language, director, cast and writer columns
@@ -97,6 +109,8 @@ df['genre'] = df['genre'].str.replace(r"\'","", regex=True)
 df['country'] = df['country'].str.replace(r"\'","", regex=True)
 df['language'] = df['language'].str.replace(r"\'","", regex=True)
 df['director'] = df['director'].str.replace(r"\'","", regex=True)
+df['cast'] = df['cast'].str.replace(r"\'","", regex=True)
+df['writer'] = df['writer'].str.replace(r"\'","", regex=True)
 ```
 ```
 #splitting the genre column into sub-categories. Only the first genre category will be considered for this analysis.
@@ -122,7 +136,7 @@ df.replace(regex=r'video movie', value='movie', inplace=True)
 ```
 ```
 #save to csv
-df.to_csv('cleaned_imdb_data.csv')
+df.to_csv('cleaned_imdb_dataset.csv')
 ```
 
  ## 3. Analyze and Share
@@ -229,3 +243,33 @@ wordcloud = WordCloud(width = 2000, height = 1000, random_state=1, background_co
 plot_cloud(wordcloud)
 ```
 ![download](https://user-images.githubusercontent.com/116041695/216799213-e5cabb02-3d0b-4605-b46f-5851fc6a4b45.png)
+
+### 3.8 Time series of Ratings
+
+```
+# Create a line chart using Seaborn
+plt.figure(figsize=(15, 8))
+ax = sns.lineplot(x='year', y='rating', data=df, marker='o')
+
+# Set x-axis ticks for every 5 years
+plt.xticks(range(df['year'].min(), df['year'].max() + 1, 5))
+
+plt.xlabel('Years')
+plt.ylabel('Rating')
+plt.title('Ratings Over the Years', fontsize=15)
+plt.grid(True)
+plt.tight_layout()  # Adjust spacing between labels
+plt.show()
+```
+
+### 3.9 Relationship between rating and votes
+
+```
+plt.figure(figsize=(10, 6))
+plt.scatter(x = 'rating', y = 'vote', data = df)
+plt.xlabel('Vote')
+plt.ylabel('Rating')
+plt.title('Relationship between Rating and Vote')
+plt.grid(True)
+plt.show()
+```
