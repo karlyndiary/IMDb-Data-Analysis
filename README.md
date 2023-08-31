@@ -10,23 +10,6 @@ Data analysis for the case study follows the following steps:
 
 * [1. Prepare](#1-prepare)
 * [2. Process](#2-process)
-    * [2.1 Loading Libraries](#installing_the_necessary_packages_needed_for_cleaning_and_analysis)
-    * [2.2 Loading Dataset](#loading-dataset)
-    * [2.3 Exploring Dataset](#explore_dataset)
-    * [2.4 Data Cleaning](#data_cleaning)
-* [3. Analyze and Share](#analyze_and_share)
-    * [3.0 Setting the theme](#setting_the_theme)
-    * [3.1 Top 10 Best Performing Movies and TV Shows](#top_10_best_performing_movies_and_tv_shows)
-    * [3.2 Distribution of Category](#distribution_of_category)
-    * [3.3 Genre with the most releases](#genre_with_the_most_releases)
-    * [3.4 Total number of releases each year](#total_number_of_releases_each_year)
-    * [3.5 Top 10 countries with most releases](#top_10_countries_with_most_releases)
-    * [3.6 Top 10 Directors](#top_10_directors)
-    * [3.7 Wordcloud for Cast](#wordcloud_for_cast)
-    * [3.8 Time series of Ratings](#time_series_of_ratings)
-    * [3.9 Relationship between ratings and votes](#relationship_between_ratings_and_votes)
- 
-[2. Process](#2-process)
     * [2.1 Loading Libraries](#installing-the-necessary-packages-needed-for-cleaning-and-analysis)
     * [2.2 Loading Dataset](#loading-dataset)
     * [2.3 Exploring Dataset](#explore-dataset)
@@ -48,7 +31,7 @@ The data used is stored in Kaggle under [Netflix Prize Shows Information (9000 S
 
 ## 2. Process
 
-### 2.1 Installing the necessary packages needed for cleaning and analysis.
+### 2.1 Loading Libraries
 
 ```bash
 import pandas as pd
@@ -68,12 +51,12 @@ nltk.download('stopwords')
 from wordcloud import WordCloud
 ```
 
-### 2.2 Loading dataset
+### 2.2 Loading Dataset
 ```
 df = pd.read_csv(r'/kaggle/input/netflix-prize-shows-information/imdb_processed.csv')
 ```
 
-### 2.3 Exploring the dataframe
+### 2.3 Exploring Dataset
 ```
 df.head()
 ```
@@ -176,11 +159,11 @@ df.to_csv('cleaned_imdb_dataset.csv')
 ```
 
  ## 3. Analyze and Share
-### 3.0 Setting the theme for all the plots
+### 3.0 Setting the theme
 ```
 sns.set_theme()
 ```
-### 3.1 Top 10 Best Perfoming Movies and TV Shows
+### 3.1 Top 10 Best Performing Movies and TV Shows
 ```
 fig = plt.figure(figsize = (10, 5))
 ax = sns.barplot(x = 'title', y = 'rating', data = df.sort_values('rating', ascending=False)[0:10])
