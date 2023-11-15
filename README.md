@@ -6,6 +6,7 @@ Data analysis for the case study follows the following steps:
 * [1. Prepare](#1-prepare)
 * [2. Process](#2-process)
 * [3. Analyze and Share](#3-analyze-and-share)
+* [4. Tableau Dashboard](#4-tableau-dashboard)
 
 ## 1. Prepare
 The data used is stored in Kaggle under [Netflix Prize Shows Information (9000 Shows)](https://www.kaggle.com/datasets/akashguna/netflix-prize-shows-information). The dataset contains information like the movie's duration, cast, director, genre, and languages present.
@@ -275,4 +276,8 @@ plt.grid(True)
 plt.show()
 ```
 ![__results___47_0](https://github.com/karlyndiary/IMDb-Data-Analysis/assets/116041695/1d665a70-7db4-4e49-b6ea-1ad57654f828)
+
+## 4. Tableau Dashboard
+![Dashboard](https://github.com/karlyndiary/IMDb-Data-Analysis/assets/116041695/fe31ac64-5937-4fe7-9821-8640c2aca4d4)
+
 
