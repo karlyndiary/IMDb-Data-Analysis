@@ -147,15 +147,28 @@ sns.set_theme()
 ```
 ### 3.1 Top 10 Best Performing Movies and TV Shows
 ```
-fig = plt.figure(figsize = (10, 5))
+fig = plt.figure(figsize = (15, 8))
 ax = sns.barplot(x = 'title', y = 'rating', data = df.sort_values('rating', ascending=False)[0:10])
+
+# Plot the ratings on top of the bars
+for p in ax.patches:
+    ax.annotate(format(p.get_height(), '.1f'), 
+                (p.get_x() + p.get_width() / 2., p.get_height()), 
+                ha = 'center', va = 'center', 
+                xytext = (0, 10), 
+                textcoords = 'offset points')
+    
 plot = ax.set_xticklabels(ax.get_xticklabels(), rotation = 90)
 plt.xlabel('Movie Title and TV Shows')
 plt.ylabel('Rating')
 plt.title('Top 10 Best Performing Movies and TV Shows', fontsize = 15)
+
+# Set y-axis ticks
+plt.yticks([0, 2, 4, 6, 8, 10])
+
 plt.show()
 ```
-![download (13)](https://user-images.githubusercontent.com/116041695/216750399-5b70ace0-9f26-4e47-8ce4-e7da12eb01e7.png)
+![download](https://github.com/karlyndiary/IMDb-Data-Analysis/assets/116041695/8357967d-85a1-4188-9b6f-9b7f24363247)
 
 ### 3.2 Distribution of Category
 ```
@@ -165,7 +178,7 @@ plt.title("Movies and TV Shows Release Categories", fontsize = 15)
 plt.xlabel('Category')
 plt.ylabel('Count')
 ```
-![download (8)](https://user-images.githubusercontent.com/116041695/216749475-0f2638c1-db8e-4cd7-85c4-7d8373b31308.png)
+![download (1)](https://github.com/karlyndiary/IMDb-Data-Analysis/assets/116041695/20753991-fb8b-48ae-b049-469c02061f34)
 
 ### 3.3 Genre with the most releases
 
@@ -185,11 +198,11 @@ fig_tree.update_layout(title='Highest release in Geners',
 ### 3.4 Total number of releases each year
 ```
 sns.displot(df, x="year", hue="category", kind="kde", fill=True)
-plt.title("Number of movie releases each year")
-plt.ylabel('Number of releases')
-plt.xlabel('Year')
+plt.title("Number of movie releases each year", fontsize = 15)
+plt.ylabel('Number of releases', fontsize = 12)
+plt.xlabel('Year', fontsize = 12)
 ```
-![download (9)](https://user-images.githubusercontent.com/116041695/216749512-3cf0861b-46b5-4017-ba31-1fb66aedf95d.png)
+![download (2)](https://github.com/karlyndiary/IMDb-Data-Analysis/assets/116041695/53ec23cf-250d-4d48-820a-d8757831e435)
 
 ### 3.5 Top 10 countries with most releases
 
@@ -206,24 +219,24 @@ country_df.head(11)
 ```
 plt.figure(figsize = (16, 9))
 plt.title("Top 10 Countries with most releases", fontsize = 25)
-plt.ylabel('Countries', fontsize = 15)
-plt.xlabel('Count', fontsize = 15)
 data = country_df[-(country_df.country == 'Missing')]
 g = data.groupby('country', as_index=False)['count'].sum().sort_values(by='count', ascending=False).head(10)
 ax = sns.barplot(data=g, y = 'country', x='count')
+plt.ylabel('Countries', fontsize = 15)
+plt.xlabel('Count', fontsize = 15)
 ```
-![download (10)](https://user-images.githubusercontent.com/116041695/216749556-94646c36-3f19-4ffd-b543-4aae43b3603d.png)
+![download (3)](https://github.com/karlyndiary/IMDb-Data-Analysis/assets/116041695/2886ce4a-3085-41d5-80ec-76dc2af94c8a)
 
 ### 3.6 Top 10 Directors
 
 ```
 plt.figure(figsize = (16, 9))
 ax = sns.countplot(data = df[-(df.director == 'Missing')], y = 'director', order=df['director'].value_counts().index[1:11])
-plt.title("Top 10 Directors", fontsize = 15)
+plt.title("Top 10 Directors", fontsize = 25)
 plt.xlabel('Count', fontsize = 15)
 plt.ylabel('Directors', fontsize = 15)
 ```
-![download (12)](https://user-images.githubusercontent.com/116041695/216750034-b7d55478-4ca9-451c-af9a-c39ff283cdd5.png)
+![download (4)](https://github.com/karlyndiary/IMDb-Data-Analysis/assets/116041695/6c363f4e-7d20-416f-a2e0-1d8abd919ac1)
 
 ### 3.7 Wordcloud for Cast
 
@@ -243,7 +256,7 @@ wordcloud = WordCloud(width = 2000, height = 1000, random_state=1, background_co
                       colormap='viridis', collocations=False).generate(all_words_str)
 plot_cloud(wordcloud)
 ```
-![download](https://user-images.githubusercontent.com/116041695/216799213-e5cabb02-3d0b-4605-b46f-5851fc6a4b45.png)
+![download (5)](https://github.com/karlyndiary/IMDb-Data-Analysis/assets/116041695/0f64888b-2a9f-4329-bc30-7ddd175e39db)
 
 ### 3.8 Time series of Ratings
 
@@ -262,7 +275,7 @@ plt.grid(True)
 plt.tight_layout()  # Adjust spacing between labels
 plt.show()
 ```
-![__results___45_0](https://github.com/karlyndiary/IMDb-Data-Analysis/assets/116041695/b096e1a9-99fe-4913-83ad-fd53db5556bd)
+![download (6)](https://github.com/karlyndiary/IMDb-Data-Analysis/assets/116041695/5c6a9351-7ffd-4580-91e6-5668928a41f5)
 
 ### 3.9 Relationship between ratings and votes
 
@@ -275,9 +288,7 @@ plt.title('Relationship between Rating and Vote')
 plt.grid(True)
 plt.show()
 ```
-![__results___47_0](https://github.com/karlyndiary/IMDb-Data-Analysis/assets/116041695/1d665a70-7db4-4e49-b6ea-1ad57654f828)
+![download (7)](https://github.com/karlyndiary/IMDb-Data-Analysis/assets/116041695/4d20d767-9770-40b1-980f-ba461da43943)
 
 ## 4. Tableau Dashboard
 ![Dashboard](https://github.com/karlyndiary/IMDb-Data-Analysis/assets/116041695/fe31ac64-5937-4fe7-9821-8640c2aca4d4)
-
-
